@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
 import { connect } from 'react-redux';
-import { testAction } from '../actions/test';
+import { testAction } from '../../actions';
 
 class HomeScreen extends React.Component {
   static navigationOptions = {
