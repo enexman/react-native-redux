@@ -1,5 +1,5 @@
 import React from 'react';
-import Start from '../Start'
+import Start from '../start/Start'
 
 class StartScreen extends React.Component {
   static navigationOptions = {

@@ -13,3 +13,8 @@ export const Text = {
   title:  21,
   strong: 16,
 };
+
+export const flexRow = {
+  display: 'flex',
+  flexDirection: 'row',
+};

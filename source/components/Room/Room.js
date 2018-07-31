@@ -1,11 +1,18 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
+import Hero from '../hero/Hero'
+import RoomMessage from './RoomMessage'
+import RoomNavigation from './RoomNavigation'
+import RoomMove from './RoomMove'
 
 class Room extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>Room</Text>
+        <RoomMove />
+        <RoomMessage />
+        <RoomNavigation />
+        <Hero />
       </View>
     );
   }
@@ -13,8 +20,8 @@ class Room extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: 'black',
+    // flex: 1,
+    // backgroundColor: 'black',
     alignItems: 'center',
     justifyContent: 'center',
   },
