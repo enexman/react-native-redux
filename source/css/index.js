@@ -1,10 +1,10 @@
 
 const ballSize = '14px';
 
-export const Colors = {
+export const Color = {
   black: 'black',
   green: '#00f70c',
-  red: 'f71f00',
+  red: '#f71f00',
 };
 
 export const Text = {

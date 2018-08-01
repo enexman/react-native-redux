@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { Colors } from '../css';
+import { Color } from '../../css';
 
 class TextView extends React.Component {
 
@@ -8,7 +8,7 @@ class TextView extends React.Component {
     return (
       <View style={styles.container}>
         <Text style={styles.textColor}>{this.props.name} </Text>
-        <Text style={styles.textColor}>{this.props.value}</Text>
+        <Text style={[styles.textColor, styles.weight]}>{this.props.value}</Text>
       </View>
     );
   }
@@ -20,8 +20,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   textColor: {
-    color: Colors.green
+    color: Color.green,
   },
+  weight: {
+    fontWeight: 'bold',
+  }
 });
 
 export default TextView;

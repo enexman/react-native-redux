@@ -4,7 +4,7 @@ import StartScreen from './StartScreen';
 
 const Navigation = createStackNavigator({
   Home: { screen: RoomScreen },
-  // room: { screen: RoomScreen },
+  Room: { screen: RoomScreen },
 });
 
 export default Navigation;

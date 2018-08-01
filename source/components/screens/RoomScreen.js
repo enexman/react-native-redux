@@ -1,12 +1,11 @@
 import React from 'react';
 import Room from '../room/Room'
 
-class StartScreen extends React.Component {
+class RoomScreen extends React.Component {
   static navigationOptions = {
     title: 'Room',
     headerStyle: { display: 'none' }
   };
-
   render() {
     const { navigate } = this.props.navigation;
     return (
@@ -15,4 +14,4 @@ class StartScreen extends React.Component {
   }
 }
 
-export default StartScreen;
+export default RoomScreen;

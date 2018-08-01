@@ -1,13 +1,13 @@
 import React from 'react';
 import { StyleSheet, View, Button, Text } from 'react-native';
 import StartBtn from './StartBtn'
-import { Colors } from './../../css';
+import { Color } from './../../css';
 
 class Start extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <StartBtn />
+        <StartBtn navigate={this.props.navigate}/>
       </View>
     );
   }
@@ -16,7 +16,7 @@ class Start extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: Colors.black,
+    backgroundColor: Color.black,
     alignItems: 'center',
     justifyContent: 'center',
   },

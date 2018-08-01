@@ -6,7 +6,7 @@ class StartScreen extends React.Component {
     title: 'Start',
     headerStyle: { display: 'none' }
   };
-  
+  componentWillUnmount() {}
   render() {
     const { navigate } = this.props.navigation;
     return (
