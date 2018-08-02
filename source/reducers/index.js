@@ -4,6 +4,7 @@ import { room } from './room';
 import { hero } from './hero';
 import { move } from './move';
 import { weapons } from './weapons';
+import { inventory } from './inventory';
 
 export const reducers = combineReducers({
   test,
@@ -11,4 +12,5 @@ export const reducers = combineReducers({
   hero,
   move,
   weapons,
+  inventory,
 });

@@ -1,8 +1,8 @@
 import React from 'react';
-import { StyleSheet, View, Text, TouchableWithoutFeedback, Alert } from 'react-native';
+import { StyleSheet, View, Text, TouchableWithoutFeedback } from 'react-native';
 import { Color } from './../../css';
 
-class StartBtn extends React.Component {
+class CloseBtn extends React.Component {
   state ={
     touchColor: false,
   };
@@ -24,7 +24,7 @@ class StartBtn extends React.Component {
         onPress={this.onPressTouchable.bind(this)}
       >
         <View style={[styles.button, this.state.touchColor && styles.touchColorBG]}>
-          <Text style={[styles.text, this.state.touchColor && styles.touchColorText]}>START GAME</Text>
+          <Text style={[styles.green, this.state.touchColor && styles.touchColorText]}>X</Text>
         </View>
       </TouchableWithoutFeedback>
     );
@@ -33,15 +33,16 @@ class StartBtn extends React.Component {
 
 const styles = StyleSheet.create({
   button: {
+    position: 'absolute',
     backgroundColor: Color.black,
-    width: 120,
-    height: 35,
+    width: 25,
+    height: 25,
+    right: 20,
+    top: 0,
     alignItems: 'center',
     justifyContent: 'center',
-    borderColor: Color.green,
-    borderWidth: 2,
   },
-  text: {
+  green: {
     color: Color.green,
     fontWeight: 'bold',
   },
@@ -52,5 +53,5 @@ const styles = StyleSheet.create({
     color: Color.black,
   }
 });
-// Alert.alert('click In')
-export default StartBtn;
+
+export default CloseBtn;

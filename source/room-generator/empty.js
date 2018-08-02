@@ -3,9 +3,7 @@ import { sortRandom, getRandomNumber } from '../util';
 export default function createEmptyRoom() {
 
   const events = [
-    `Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-    Consectetur dolorem eos, ex laborum minus nisi omnis veritatis.
-    Amet, consectetur cumque dignissimos distinctio doloremque dolores`
+    `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur dolorem eos, ex laborum minus nisi omnis veritatis. Amet, consectetur cumque dignissimos distinctio doloremque dolores`
   ];
   const paths = [`forward`, `right`, `left`];
 

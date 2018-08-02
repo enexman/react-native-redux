@@ -1,11 +1,17 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
+import { connect } from 'react-redux';
+import { Color } from './../../css';
+import LineView from './../elements/LineView';
 
 class RoomMove extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>Move: 32</Text>
+        <LineView />
+        <View style={styles.move}>
+          <Text style={styles.text}>Move: {this.props.move.move}</Text>
+        </View>
       </View>
     );
   }
@@ -13,7 +19,20 @@ class RoomMove extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
   },
+  move: {
+    position: 'absolute',
+    left: 100,
+    backgroundColor: Color.black,
+    // top: 10,
+  },
+  text: {
+    color: Color.green,
+    fontWeight: 'bold',
+    paddingLeft: 10,
+    paddingRight: 10,
+  }
 });
 
-export default RoomMove;
+export default connect(({move}) => ({move}), {})(RoomMove);

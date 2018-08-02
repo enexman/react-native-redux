@@ -1,22 +1,22 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import HeroParameters from'./HeroParameters'
-import HeroArmor from'./HeroArmor'
+import HeroWeapons from'./HeroWeapons'
 import HeroInventoryBtn from'./HeroInventoryBtn'
+import HeroRace from'./HeroRace'
+import HeroKarma from'./HeroKarma'
 
 class Hero extends React.Component {
   render() {
     return (
-      <View>
-        <View>
-          <Text>Race: Human</Text>
-          <Text>Class: no class</Text>
-        </View>
-        <View style={styles.container}>
+      <View style={styles.container}>
+        <HeroRace />
+        <View style={styles.wrapper}>
           <HeroParameters />
-          <HeroArmor />
-          <HeroInventoryBtn />
+          <HeroWeapons />
+          <HeroInventoryBtn navigate={this.props.navigate}/>
         </View>
+        <HeroKarma />
       </View>
     );
   }
@@ -24,12 +24,13 @@ class Hero extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    // display: 'flex',
+    flex: 6,
+    marginLeft: 20,
+    marginRight: 20,
+  },
+  wrapper: {
+    justifyContent: 'space-between',
     flexDirection: 'row',
-    // flex: 1,
-    // backgroundColor: 'black',
-    // alignItems: 'center',
-    // justifyContent: 'center',
   },
 });
 

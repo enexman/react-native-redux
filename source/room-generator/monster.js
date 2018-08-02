@@ -9,7 +9,7 @@ export default function createRoomOfMonster() {
   const monster = monsters[getRandomNumber(monsters.length)];
   return {
     type: `monster`,
-    message: `You meet ${monster}`,
+    message: `You meet the ${monster}`,
     navigation: paths,
     monster: monster
   }

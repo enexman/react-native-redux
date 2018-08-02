@@ -6,6 +6,10 @@ import { testAction } from '../../actions';
 class HomeScreen extends React.Component {
   static navigationOptions = {
     title: 'Welcome',
+    headerTintColor: '#fff',
+    headerTitleStyle: {
+      fontWeight: 'bold',
+    },
   };
 
   componentDidMount () {
