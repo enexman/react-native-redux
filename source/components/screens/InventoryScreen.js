@@ -3,7 +3,7 @@ import Inventory from '../inventory/Inventory'
 
 class InventoryScreen extends React.Component {
   static navigationOptions = {
-    title: 'Room',
+    title: 'Inventory',
     headerStyle: { display: 'none' }
   };
   render() {

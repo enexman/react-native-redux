@@ -7,13 +7,13 @@ import { Color } from './../../css';
 
 class InventoryDesc extends React.Component {
   render() {
-    // const { message, navigation, type } = this.props.inventory;
+    const { description } = this.props.description;
     return (
       <View style={styles.container}>
-        <Text style={styles.green}>Description inventory</Text>
+        <Text style={styles.green}>{description.description}</Text>
         <View style={styles.wrapper}>
-          <DropBtn />
-          <TakeBtn />
+          <DropBtn id={description.id}/>
+          <TakeBtn item={description}/>
         </View>
       </View>
     );
@@ -23,8 +23,6 @@ class InventoryDesc extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: Color.black,
-    // alignItems: 'center',
     justifyContent: 'space-between',
     marginRight: 20,
   },
@@ -37,5 +35,4 @@ const styles = StyleSheet.create({
   }
 });
 
-// export default connect(({inventory}) => ({inventory}))(Inventory);
-export default connect(null, {})(InventoryDesc);
+export default connect(({description}) => ({description}), {})(InventoryDesc);

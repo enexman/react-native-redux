@@ -1,5 +1,6 @@
 import { Type } from '../data/type';
 
-export const createWeapons = () => ({
-  type: Type.CREATE_WEAPONS,
+export const addWeapon = (weapon) => ({
+  type: Type.ADD_WEAPON_HERO,
+  payload: weapon,
 });

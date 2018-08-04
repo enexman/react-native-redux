@@ -10,7 +10,7 @@ class NavButton extends React.Component {
   };
   onPressInTouchable() {
     this.setState({
-      touchColor: !this.state.touchColor
+      touchColor: true,
     })
   }
   onPressTouchable() {

@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableWithoutFeedback } from 'react-native';
 import { connect } from 'react-redux';
+import { activeDescription } from '../../actions'
 import { Color } from './../../css';
 
 class InventoryItem extends React.Component {
@@ -9,16 +10,16 @@ class InventoryItem extends React.Component {
   };
   onPressInTouchable() {
     this.setState({
-      touchColor: !this.state.touchColor
+      touchColor: true,
     })
   }
   onPressTouchable() {
     this.setState({
       touchColor: !this.state.touchColor
     });
+    this.props.activeDescription(this.props.item);
   }
   render() {
-    // const { message, navigation, type } = this.props.inventory;
     return (
       <TouchableWithoutFeedback
         onPressIn={this.onPressInTouchable.bind(this)}
@@ -26,7 +27,7 @@ class InventoryItem extends React.Component {
       >
         <View style={[styles.button, this.state.touchColor && styles.touchColorBG]}>
           <Text style={[styles.text, this.state.touchColor && styles.touchColorText]}>
-            {this.props.inventoryItem.name}
+            {this.props.item.name}
           </Text>
         </View>
       </TouchableWithoutFeedback>
@@ -36,7 +37,6 @@ class InventoryItem extends React.Component {
 
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: Color.black,
     marginBottom: 5,
   },
   text: {
@@ -52,5 +52,4 @@ const styles = StyleSheet.create({
   }
 });
 
-// export default connect(({inventory}) => ({inventory}))(Inventory);
-export default connect(null, {})(InventoryItem);
+export default connect(null, {activeDescription})(InventoryItem);

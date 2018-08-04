@@ -25,7 +25,6 @@ const styles = StyleSheet.create({
     position: 'absolute',
     left: 100,
     backgroundColor: Color.black,
-    // top: 10,
   },
   text: {
     color: Color.green,

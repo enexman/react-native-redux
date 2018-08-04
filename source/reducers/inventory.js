@@ -1,4 +1,4 @@
-// import { Type } from '../data/type';
+import { Type } from '../data/type';
 
 const INITIAL_STATE = [
   {
@@ -8,7 +8,7 @@ const INITIAL_STATE = [
     name: `Шлем`,
     update: ``,
     sum: 0,
-    description: ``,
+    description: `Это крутой шлем`,
   },
   {
     id: `2w`,
@@ -17,7 +17,7 @@ const INITIAL_STATE = [
     name: `Доспехи`,
     update: ``,
     sum: 0,
-    description: ``,
+    description: `Это крутые доспехи`,
   },
   {
     id: `3w`,
@@ -26,14 +26,14 @@ const INITIAL_STATE = [
     name: `Меч`,
     update: ``,
     sum: 0,
-    description: ``,
+    description: `Это крутой меч`,
   },
 ];
 
 export const inventory = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    // case Type.CREATE_HERO:
-    //   return {...state};
+    case Type.DROP_WEAPON_INVENTORY:
+      return state.filter((it) => it.id !== action.payload);
     default:
       return state;
   }

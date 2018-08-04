@@ -8,7 +8,7 @@ class InventoryList extends React.Component {
   render() {
     const { inventory } = this.props;
     const inventories = inventory.map((it) => {
-      return <InventoryItem key={it.id} inventoryItem={it}/>
+      return <InventoryItem key={it.id} item={it}/>
     });
 
     return (
@@ -22,8 +22,6 @@ class InventoryList extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: Color.black,
-    // alignItems: 'center',
     justifyContent: 'flex-start',
     marginLeft: 20,
   },

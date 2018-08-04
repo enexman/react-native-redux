@@ -7,7 +7,7 @@ class HeroInventoryBtn extends React.Component {
   };
   onPressInTouchable() {
     this.setState({
-      touchColor: !this.state.touchColor
+      touchColor: true,
     })
   }
   onPressTouchable() {

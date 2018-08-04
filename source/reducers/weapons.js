@@ -50,9 +50,24 @@ const INITIAL_STATE = {
 
 export const weapons = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case Type.CREATE_WEAPONS:
-      return {...state};
+    case Type.ADD_WEAPON_HERO:
+      return addWeapon(state, action);
     default:
       return state;
+  }
+};
+
+const addWeapon = (state, action) => {
+  switch (action.payload.use) {
+    case 'head' :
+      return {...state, head: action.payload};
+    case 'body' :
+      return {...state, body: action.payload};
+    case 'handRight' :
+      return {...state, handRight: action.payload};
+    case 'handLeft' :
+      return {...state, handLeft: action.payload};
+    case 'feet' :
+      return {...state, feet: action.payload};
   }
 };

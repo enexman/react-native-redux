@@ -9,7 +9,7 @@ export default function createEmptyRoom() {
 
   const getNavigation = function (list) {
     let copy = list.slice();
-    const random = Math.floor(1 + Math.random() * copy.length);
+    const random = Math.floor(1 + Math.random() * 2);
     return copy.sort(sortRandom).slice(0, random).sort();
   };
 

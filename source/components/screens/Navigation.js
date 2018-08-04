@@ -4,7 +4,7 @@ import StartScreen from './StartScreen';
 import InventoryScreen from './InventoryScreen';
 
 const Navigation = createStackNavigator({
-  Home: { screen: InventoryScreen },
+  Home: { screen: StartScreen },
   Room: { screen: RoomScreen },
   Inventory: { screen: InventoryScreen },
 });

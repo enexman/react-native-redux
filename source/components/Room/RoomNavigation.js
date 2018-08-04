@@ -18,7 +18,7 @@ class RoomNavigation extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 4,
+    flex: 3,
     marginLeft: 20,
     marginRight: 20,
   },

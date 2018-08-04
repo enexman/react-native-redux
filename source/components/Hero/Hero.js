@@ -16,7 +16,6 @@ class Hero extends React.Component {
           <HeroWeapons />
           <HeroInventoryBtn navigate={this.props.navigate}/>
         </View>
-        <HeroKarma />
       </View>
     );
   }
