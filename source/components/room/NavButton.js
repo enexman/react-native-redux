@@ -1,8 +1,8 @@
 import React from 'react';
-import { StyleSheet, Text, View, TouchableWithoutFeedback, Alert} from 'react-native';
+import { StyleSheet, Text, View, TouchableWithoutFeedback} from 'react-native';
 import { connect } from 'react-redux';
 import { Color } from './../../css';
-import { nextMove, createRoom } from '../../actions';
+import { nextMove, createRoom, isTouch } from '../../actions';
 
 class NavButton extends React.Component {
   state ={
@@ -24,10 +24,13 @@ class NavButton extends React.Component {
       case 'forward' :
       case 'right' :
       case 'left' :
-      case 'fight' :
       case 'run' :
         this.props.nextMove();
         this.props.createRoom();
+        this.props.isTouch(false);
+        return;
+      case 'fight' :
+        this.props.navigate('Fight');
         return;
       default: return;
     }
@@ -88,4 +91,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default connect(null,{nextMove, createRoom})(NavButton);
+export default connect(null,{nextMove, createRoom, isTouch})(NavButton);

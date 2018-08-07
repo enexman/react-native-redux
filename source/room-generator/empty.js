@@ -17,6 +17,7 @@ export default function createEmptyRoom() {
   return {
     type: `empty`,
     message: eventElem,
-    navigation: getNavigation(paths)
+    navigation: getNavigation(paths),
+    dialog: false,
   }
 };

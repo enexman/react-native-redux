@@ -5,7 +5,7 @@ import TextView from'./TextView'
 
 class HeroWeapons extends React.Component {
   render() {
-    const { head, body, handRight, handLeft, feet} = this.props.weapons;
+    const { head, body, handRight, handLeft, feet} = this.props.hero.weapons;
     return (
       <View>
         <TextView name="Head:" value={head.name}/>
@@ -18,4 +18,4 @@ class HeroWeapons extends React.Component {
   }
 }
 
-export default connect(({weapons}) => ({weapons}), {})(HeroWeapons);
+export default connect(({hero}) => ({hero}), {})(HeroWeapons);

@@ -6,8 +6,8 @@ const INITIAL_STATE = [
     type: `weapon`,
     use: `head`,
     name: `Шлем`,
-    update: ``,
-    sum: 0,
+    update: `luck`,
+    sum: 3,
     description: `Это крутой шлем`,
   },
   {
@@ -15,8 +15,8 @@ const INITIAL_STATE = [
     type: `weapon`,
     use: `body`,
     name: `Доспехи`,
-    update: ``,
-    sum: 0,
+    update: `agility`,
+    sum: 2,
     description: `Это крутые доспехи`,
   },
   {
@@ -24,8 +24,8 @@ const INITIAL_STATE = [
     type: `weapon`,
     use: `handRight`,
     name: `Меч`,
-    update: ``,
-    sum: 0,
+    update: `strength`,
+    sum: 4,
     description: `Это крутой меч`,
   },
 ];

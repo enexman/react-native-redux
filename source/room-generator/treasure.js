@@ -14,9 +14,10 @@ export default function createRoomOfTreasure() {
   const treasure = treasures[getRandomNumber(treasures.length)];
   return {
     type: `treasure`,
-    message: `You find the ${treasure.name} ${treasure.update} +${treasure.sum}. See into inventory`,
+    message: `You find the ${treasure.name} ${treasure.update}. See into inventory`,
     navigation: getNavigation(paths),
-    dialog: `You got ${treasure.name}`,
+    dialog: `You got ${treasure.name} +`,
     treasure: { ...treasure, id: generatorId()},
+    sum: treasure.sum,
   }
 };

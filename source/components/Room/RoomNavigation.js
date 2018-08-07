@@ -6,7 +6,7 @@ class RoomNavigation extends React.Component {
   render() {
     const { navigation } = this.props;
     const navButtons = navigation.map((it, id) => {
-      return <NavButton key={id} target={it}/>
+      return <NavButton key={id} target={it} navigate={this.props.navigate}/>
     });
     return (
       <View style={styles.container}>

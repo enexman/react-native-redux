@@ -11,6 +11,7 @@ export default function createRoomOfMonster() {
     type: `monster`,
     message: `You meet the ${monster}`,
     navigation: paths,
-    monster: monster
+    monster: monster,
+    dialog: false,
   }
 };

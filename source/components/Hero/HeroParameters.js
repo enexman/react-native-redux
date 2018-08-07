@@ -1,31 +1,31 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { StyleSheet, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
 import TextView from'./TextView'
 
 class HeroParameters extends React.Component {
   render() {
-    const { name, level, strength, agility, luck } = this.props.hero;
+    const { name, level, strength, agility, luck, weapons } = this.props.hero;
+    const getSum = (param) => {
+      let sum = this.props.hero[param];
+      for (let key in weapons) {
+        if (weapons[key].update === param) {
+          sum += weapons[key].sum;
+        }
+      }
+      return (sum <= 1) ? 1 : sum;
+    };
     return (
-      <View style={styles.container}>
+      <View>
         <TextView name="Name:" value={name}/>
-        <TextView name="Level:" value={level}/>
-        <TextView name="Strength:" value={strength}/>
-        <TextView name="Agility:" value={agility}/>
-        <TextView name="Luck:" value={luck}/>
+        <TextView name="Level:" value={getSum('level')}/>
+        <TextView name="Strength:" value={getSum('strength')}/>
+        <TextView name="Agility:" value={getSum('agility')}/>
+        <TextView name="Luck:" value={getSum('luck')}/>
       </View>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    // flex: 1,
-    // backgroundColor: 'black',
-    // alignItems: 'center',
-    // justifyContent: 'center',
-  },
-});
 
 export default connect(({hero}) => ({hero}))(HeroParameters);
 

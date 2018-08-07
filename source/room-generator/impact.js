@@ -2,7 +2,7 @@ import { sortRandom, getRandomNumber, generatorId } from '../util';
 import { impacts } from '../data/impacts';
 
 export default function createRoomOfImpact() {
-  
+
   const paths = [`forward`, `right`, `left`];
 
   const getNavigation = function (list) {
@@ -16,7 +16,8 @@ export default function createRoomOfImpact() {
     type: `impact`,
     message: `You find impact: ${impact.name}`,
     navigation: getNavigation(paths),
-    dialog: `You ${impact.name} -${impact.sum}`,
+    dialog: `You ${impact.name} -`,
     impact: { ...impact, id: generatorId()},
+    sum: impact.sum
   }
 };

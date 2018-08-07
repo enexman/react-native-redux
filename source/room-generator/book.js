@@ -1,8 +1,9 @@
-import { sortRandom, getRandomNumber } from '../util';
+import { sortRandom, getRandomNumber, getRandomSumParameter } from '../util';
 
 export default function createRoomOfBook() {
   const books = [`strength`, `agility`, `luck`];
   const paths = [`forward`, `right`, `left`];
+  const maxSumParameter = 1;
 
   const getNavigation = function (list) {
     let copy = list.slice();
@@ -15,7 +16,8 @@ export default function createRoomOfBook() {
     type: `book`,
     message: `You find a book of ${book}`,
     navigation: getNavigation(paths),
-    dialog: `You got ${book} +1`,
-    update: [book]
+    dialog: `You got ${book} +`,
+    update: [book],
+    sum: getRandomSumParameter(maxSumParameter),
   }
 };

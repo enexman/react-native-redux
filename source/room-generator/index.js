@@ -12,7 +12,7 @@ export const generateRoom = () => {
     `treasure`,
     `monster`,
     `book`,
-    `impact`
+    // `impact`
   ];
 
   const room = rooms[getRandomNumber(rooms.length)];
