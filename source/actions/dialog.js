@@ -1,11 +1,27 @@
 import { Type } from '../data/type';
 
-export const isOpen = (param) => ({
-  type: Type.DIALOG_IS_OPEN,
-  payload: param,
+export const openDialogRun = (hero) => ({
+  type: Type.IS_OPEN_DIALOG_RUN,
+  payload: hero,
 });
 
-export const isTouch = (param) => ({
-  type: Type.DIALOG_IS_TOUCH,
-  payload: param,
+export const closeDialogRun = () => ({
+  type: Type.IS_CLOSE_DIALOG_RUN,
+});
+
+export const openDialogAttack = (message) => ({
+  type: Type.IS_OPEN_DIALOG_ATTACK,
+  payload: message
+});
+
+export const closeDialogAttack = () => ({
+  type: Type.IS_CLOSE_DIALOG_ATTACK,
+});
+
+export const openDialogMonster = () => ({
+  type: Type.IS_OPEN_DIALOG_MONSTER,
+});
+
+export const closeDialogMonster = () => ({
+  type: Type.IS_CLOSE_DIALOG_MONSTER,
 });

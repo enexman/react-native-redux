@@ -1,11 +1,20 @@
 import { Type } from '../data/type';
 
-export const activeDescription = (description) => ({
-  type: Type.ACTIVE_DESCRIPTION,
-  payload: description
+export const createInventory = () => ({
+  type: Type.INVENTORY_CREATE,
 });
 
-export const dropWeapon = (id) => ({
-  type: Type.DROP_WEAPON_INVENTORY,
-  payload: id,
+export const removeInventory = (item) => ({
+  type: Type.INVENTORY_REMOVE,
+  payload: item,
+});
+
+export const addInventory = (item) => ({
+  type: Type.INVENTORY_ADD,
+  payload: item,
+});
+
+export const addNewWeaponInventory = (item) => ({
+  type: Type.INVENTORY_ADD_NEW_WEAPON,
+  payload: item,
 });

@@ -1,55 +1,77 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableWithoutFeedback } from 'react-native';
 import { connect } from 'react-redux';
-import { activeDescription } from '../../actions'
-import { Color } from './../../css';
+import ToggleBtn from './ToggleBtn';
+import TextView from '../hero/TextView';
 
 class InventoryItem extends React.Component {
-  state ={
-    touchColor: false,
+  state = {
+    isOpen: false,
   };
-  onPressInTouchable() {
-    this.setState({
-      touchColor: true,
-    })
-  }
   onPressTouchable() {
     this.setState({
-      touchColor: !this.state.touchColor
+      isOpen: !this.state.isOpen
     });
-    this.props.activeDescription(this.props.item);
   }
   render() {
+    const { name, description, requirement } = this.props.item;
+    const { theme, hero } = this.props;
+    const toggleBtn = (
+          requirement.rating <= hero.rating &&
+          requirement.accuracy <= hero.accuracy &&
+          requirement.strength <= hero.strength &&
+          requirement.agility <= hero.agility
+        ) ? <ToggleBtn item={this.props.item}/> : null;
     return (
-      <TouchableWithoutFeedback
-        onPressIn={this.onPressInTouchable.bind(this)}
-        onPress={this.onPressTouchable.bind(this)}
-      >
-        <View style={[styles.button, this.state.touchColor && styles.touchColorBG]}>
-          <Text style={[styles.text, this.state.touchColor && styles.touchColorText]}>
-            {this.props.item.name}
-          </Text>
+      <View  style={[styles.container, theme.borderColor]}>
+        <View>
+          <Text style={[styles.textName, theme.color]}>{name}</Text>
+          <Text style={[styles.text, theme.color]}>{description}</Text>
+          <View>
+            <TouchableWithoutFeedback
+              onPress={this.onPressTouchable.bind(this)}
+            >
+              <View>
+                <Text style={[styles.text, theme.color]}>Требования:</Text>
+              </View>
+            </TouchableWithoutFeedback>
+            <View style={[styles.requirement, this.state.isOpen && styles.visible]}>
+              <TextView name="Рейтинг: " value={requirement.rating} position={{}}/>
+              <TextView name="Точность: " value={requirement.accuracy} position={{}}/>
+              <TextView name="Сила: " value={requirement.strength} position={{}}/>
+              <TextView name="Уклонение: " value={requirement.agility} position={{}}/>
+            </View>
+          </View>
         </View>
-      </TouchableWithoutFeedback>
+        {toggleBtn}
+      </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  button: {
-    marginBottom: 5,
+  container: {
+    justifyContent: 'space-between',
+    flexDirection: 'row',
+    borderWidth: 1,
+    margin: 5,
+    marginLeft: 20,
+    marginRight: 20,
+    padding: 10,
+  },
+  textName: {
+    fontWeight: 'bold',
   },
   text: {
-    color: Color.green,
-    textAlign: 'center',
+    fontSize: 12,
   },
-  touchColorBG: {
-    backgroundColor: Color.green,
+  requirement: {
+    display: 'none',
+    marginLeft: 15,
   },
-  touchColorText: {
-    color: Color.black,
-    fontWeight: 'bold',
+  visible: {
+    display: 'flex',
   }
 });
 
-export default connect(null, {activeDescription})(InventoryItem);
+export default connect(({theme, hero}) => ({theme, hero}), {})(InventoryItem);

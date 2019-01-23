@@ -1,13 +1,19 @@
 import React from 'react';
-import { StyleSheet, View, Button, Text } from 'react-native';
-import StartBtn from './StartBtn'
-import { Color } from './../../css';
+import { connect } from 'react-redux';
+import { StyleSheet, View, Button, Text, Image } from 'react-native';
+import StartBtn from './StartBtn';
+import LoadBtn from './LoadBtn';
+import Logo from './Logo';
+// import ManualBtn from './ManualBtn';
+// import SettingsBtn from '../elements/SettingsBtn';
 
 class Start extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <StartBtn navigate={this.props.navigate}/>
+        <Logo/>
+        <LoadBtn/>
+        <StartBtn/>
       </View>
     );
   }
@@ -16,11 +22,9 @@ class Start extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: Color.black,
     alignItems: 'center',
     justifyContent: 'center',
   },
 });
 
-
-export default Start;
+export default connect(null)(Start);

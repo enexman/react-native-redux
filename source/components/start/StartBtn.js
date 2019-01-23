@@ -1,30 +1,82 @@
 import React from 'react';
-import { StyleSheet, View, Text, TouchableWithoutFeedback, Alert } from 'react-native';
+import { connect } from 'react-redux';
+import { StyleSheet, View, Text, TouchableWithoutFeedback } from 'react-native';
+import {
+  changeScreen,
+  createHero,
+  createInventory,
+  createNotes,
+  createRooms,
+  createMonsters,
+  createMedical,
+  createWeapons,
+  resetMove,
+  createSpeakers,
+  resetMedical,
+} from '../../actions'
 import { Color } from './../../css';
+import { screenNavigation } from '../../data/screen-navigation';
 
 class StartBtn extends React.Component {
   state ={
     touchColor: false,
   };
-  onPressInTouchable() {
+
+  onPressIn() {
     this.setState({
       touchColor: !this.state.touchColor
     })
   }
-  onPressTouchable() {
+
+  onPressOut() {
     this.setState({
       touchColor: !this.state.touchColor
-    });
-    this.props.navigate('Room');
+    })
+  }
+
+  onPress() {
+    const {
+      changeScreen,
+      createHero,
+      createInventory,
+      createNotes,
+      createRooms,
+      createMonsters,
+      createMedical,
+      createWeapons,
+      resetMove,
+      createSpeakers,
+      resetMedical,
+    } = this.props;
+
+    createHero();
+    // createMonsters();
+    // createMedical();
+    // createWeapons();
+    createInventory();
+    createNotes();
+    // createRooms();
+    resetMove();
+    resetMedical();
+    // createSpeakers();
+    changeScreen(screenNavigation.intro);
   }
   render() {
+    const { theme } = this.props;
     return (
       <TouchableWithoutFeedback
-        onPressIn={this.onPressInTouchable.bind(this)}
-        onPress={this.onPressTouchable.bind(this)}
+        onPressIn={this.onPressIn.bind(this)}
+        onPressOut={this.onPressOut.bind(this)}
+        onPress={this.onPress.bind(this)}
       >
-        <View style={[styles.button, this.state.touchColor && styles.touchColorBG]}>
-          <Text style={[styles.text, this.state.touchColor && styles.touchColorText]}>START GAME</Text>
+        <View style={[
+          styles.button,
+          ]}>
+          <Text style={[
+            styles.text,
+            theme.color,
+            this.state.touchColor && styles.opacity
+            ]}>НОВАЯ ИГРА</Text>
         </View>
       </TouchableWithoutFeedback>
     );
@@ -33,24 +85,33 @@ class StartBtn extends React.Component {
 
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: Color.black,
-    width: 120,
-    height: 35,
+    width: 180,
     alignItems: 'center',
     justifyContent: 'center',
-    borderColor: Color.green,
-    borderWidth: 2,
+    margin: 3,
   },
   text: {
-    color: Color.green,
     fontWeight: 'bold',
+    fontSize: 13,
   },
-  touchColorBG: {
-    backgroundColor: Color.green,
-  },
-  touchColorText: {
-    color: Color.black,
+  opacity: {
+    opacity: 0.5,
   }
 });
-// Alert.alert('click In')
-export default StartBtn;
+
+export default connect(
+  ({theme, room}) => ({theme, room}),
+  {
+    changeScreen,
+    createHero,
+    createInventory,
+    createNotes,
+    createRooms,
+    createMonsters,
+    createMedical,
+    createWeapons,
+    resetMove,
+    createSpeakers,
+    resetMedical,
+  }
+)(StartBtn);

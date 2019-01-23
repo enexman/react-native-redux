@@ -1,13 +1,18 @@
 import { Type } from '../data/type';
+import { INITIAL_STATE } from './initial-state';
 
-const INITIAL_STATE = {
-  move: 1,
+const initialState = {
+  increment: 0
 };
 
-export const move = (state = INITIAL_STATE, action) => {
+export const move = (state = initialState, action) => {
   switch (action.type) {
-    case Type.NEXT_MOVE:
-      return {...state, move: state.move + 1};
+    case Type.MOVE_RESET:
+      return {...state, increment: 0};
+
+    case Type.MOVE_INCREMENT:
+      return {...state, increment: state.increment + 1};
+
     default:
       return state;
   }

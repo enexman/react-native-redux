@@ -1,39 +1,36 @@
 import { Type } from '../data/type';
+import { INITIAL_STATE } from './initial-state';
 
-const INITIAL_STATE = [
-  {
-    id: `1w`,
-    type: `weapon`,
-    use: `head`,
-    name: `Шлем`,
-    update: `luck`,
-    sum: 3,
-    description: `Это крутой шлем`,
-  },
-  {
-    id: `2w`,
-    type: `weapon`,
-    use: `body`,
-    name: `Доспехи`,
-    update: `agility`,
-    sum: 2,
-    description: `Это крутые доспехи`,
-  },
-  {
-    id: `3w`,
-    type: `weapon`,
-    use: `handRight`,
-    name: `Меч`,
-    update: `strength`,
-    sum: 4,
-    description: `Это крутой меч`,
-  },
-];
+const initialState = INITIAL_STATE.INVENTORY;
 
-export const inventory = (state = INITIAL_STATE, action) => {
+export const inventory = (state = initialState, action) => {
   switch (action.type) {
-    case Type.DROP_WEAPON_INVENTORY:
-      return state.filter((it) => it.id !== action.payload);
+    case Type.INVENTORY_REMOVE:
+      return state.map((it) => {
+        if(it.key === action.payload.key && it.use === action.payload.use) {
+          it.active = true;
+        }
+        if (it.key !== action.payload.key && it.use === action.payload.use) {
+          it.active = false;
+        }
+        return it;
+      });
+    case Type.INVENTORY_ADD:
+      return state.map((it) => {
+        if(it.key === action.payload.key) {
+          it.active = false;
+        }
+        return it;
+      });
+
+    case Type.INVENTORY_ADD_NEW_WEAPON: {
+      return [...state, action.payload];
+    }
+
+    case Type.INVENTORY_CREATE: {
+      return [];
+    }
+
     default:
       return state;
   }

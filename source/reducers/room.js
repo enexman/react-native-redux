@@ -1,17 +1,25 @@
 import { Type } from '../data/type';
-import { generateRoom } from '../room-generator';
+import { INITIAL_STATE } from './initial-state';
+import { ROOMS } from '../data/rooms';
+import { deepCopy } from '../util';
 
-const INITIAL_STATE = {
-  message: `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur dolorem eos, ex laborum minus nisi omnis veritatis. Amet, consectetur cumque dignissimos distinctio doloremque dolores facere facilis in inventore ipsam ipsum iste maxime minima modi mollitia`,
-  navigation: [`forward`],
-  type: `empty`,
-};
+const initialState = INITIAL_STATE.ROOMS;
 
-export const room = (state = INITIAL_STATE, action) => {
+export const room = (state = initialState, action) => {
   switch (action.type) {
-    case Type.CREATE_ROOM:
-      const generatedRoom = generateRoom();
-      return {...state, ...generatedRoom};
+
+    case Type.ROOMS_CREATE: {
+      const active = ROOMS.filter((it) => action.payload === it.name)[0];
+      return deepCopy(active.rooms);
+    }
+
+    // case Type.ROOMS_ROOM_VISIBLE: {
+    //   return state.map((it) => {
+    //     if (action.payload === it.name) it.visible = true;
+    //     return it;
+    //   });
+    // }
+
     default:
       return state;
   }

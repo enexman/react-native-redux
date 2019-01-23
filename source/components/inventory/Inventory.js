@@ -1,25 +1,20 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, FlatList, Text, View } from 'react-native';
 import { connect } from 'react-redux';
-import LineView from '../elements/LineView';
-import InventoryTitle from './InventoryTitle';
-import InventoryDesc from './InventoryDesc';
-import InventoryList from './InventoryList';
-import InventoryFooter from './InventoryFooter';
-import { Color } from './../../css';
+import TitleBlock from '../elements/TitleBlock';
+import InventoryItem from './InventoryItem';
+import { screenNavigation } from '../../data/screen-navigation';
 
 class Inventory extends React.Component {
   render() {
+    const { inventory } = this.props;
     return (
       <View style={styles.container}>
-        <LineView />
-        <InventoryTitle navigate={this.props.navigate}/>
-        <View style={styles.wrapper}>
-          <InventoryDesc />
-          <InventoryList />
-        </View>
-        <InventoryFooter />
-        <LineView />
+        <TitleBlock title="Инвентарь" toBack={screenNavigation.room}/>
+        <FlatList
+          data={inventory}
+          renderItem={({item}) => <InventoryItem key={item.key} item={item} />}
+        />
       </View>
     );
   }
@@ -28,14 +23,7 @@ class Inventory extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: Color.black,
-    justifyContent: 'space-between',
   },
-  wrapper: {
-    flexDirection: 'row',
-    flex: 10,
-    margin: 20,
-  }
 });
 
-export default connect(null, {})(Inventory);
+export default connect(({inventory}) => ({inventory}), {})(Inventory);
