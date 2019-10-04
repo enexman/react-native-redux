@@ -1,14 +1,15 @@
+import { Type } from '../type';
 
 const initialState = {
-  heroMove: 'Не работает'
+  test: 'Не работает'
 };
 
 export const test = (state = initialState, action) => {
   switch (action.type) {
-    // case 'TEST':
-    //   return state;
+    case Type.TEST:
+      return {...state, test: 'работает'};
 
     default:
-      return {...state, heroMove: action.heroMove};
+      return state;
   }
 };

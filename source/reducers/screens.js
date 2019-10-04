@@ -1,4 +1,4 @@
-import { Type } from '../data/type';
+import { Type } from '../type';
 import { INITIAL_STATE } from './initial-state';
 
 const initialState = INITIAL_STATE.SCREENS;
